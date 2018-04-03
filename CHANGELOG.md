@@ -17,3 +17,10 @@ glance - what to expact from upgrading to a new version.
 ### Deprecated
 
 ### Removed
+
+
+## [0.1.0] - 2018-04-03
+
+### Added
+
+- Basic API client, allowing to retrieve a single player's statistics.
