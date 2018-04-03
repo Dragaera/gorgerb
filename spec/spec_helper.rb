@@ -1,6 +1,10 @@
 require 'gorgerb'
 
 RSpec.configure do |config|
+  config.before :each do
+    Typhoeus::Expectation.clear
+  end
+
   config.expect_with :rspec do |expectations|
     # RSpec 4
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

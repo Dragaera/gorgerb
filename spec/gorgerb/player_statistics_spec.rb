@@ -24,6 +24,14 @@ module Gorgerb
         expect(stats.kdr.marine).to be_within(0.01).of(3.0)
         expect(stats.accuracy.marine.total).to be_within(0.01).of(0.1)
       end
+
+      context 'when the hash is incomplete' do
+        it 'throws an exception' do
+          source = { 'steam_id' => 10 }
+
+          expect { PlayerStatistics.from_hsh(source) }.to raise_error(KeyError)
+        end
+      end
     end
   end
 end
