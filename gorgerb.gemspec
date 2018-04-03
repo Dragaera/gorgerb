@@ -18,11 +18,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'typhoeus'
+  spec.add_dependency 'typhoeus', '~> 1.3'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rspec', '~> 3.7'
+  spec.add_development_dependency 'pry', '~> 0.11'
 end
 
 
