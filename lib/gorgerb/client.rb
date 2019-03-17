@@ -13,8 +13,15 @@ module Gorgerb
       Typhoeus::Config.user_agent = user_agent
     end
 
-    def player_statistics(steam_id)
-      response = request("players/#{ steam_id }/statistics")
+    def player_statistics(steam_id, statistics_classes:)
+      statistics_classes = [statistics_classes] unless statistics_classes.is_a? Array
+
+      response = request(
+        "players/#{ steam_id }/statistics",
+        params: {
+          statistics_classes: statistics_classes
+        }
+      )
 
       PlayerStatistics.from_hsh(response)
     rescue KeyError => e
@@ -22,8 +29,8 @@ module Gorgerb
     end
 
     private
-    def request(path, method: :get)
-      request = build_request(path, method: :get)
+    def request(path, method: :get, params: {})
+      request = build_request(path, method: :get, params: params)
       request.run
 
       response = request.response
@@ -42,10 +49,12 @@ module Gorgerb
       raise APIError, 'Invalid JSON received from API'
     end
 
-    def build_request(path, method: :get)
+    def build_request(path, method: :get, params:)
       opts = {
         connecttimeout: @connect_timeout,
-        timeout: @timeout
+        timeout: @timeout,
+        params: params,
+        params_encoding: :rack
       }
       opts[:userpwd] = "#{ @http_user }:#{ @http_password }" if @http_user && @http_password
 
