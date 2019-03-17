@@ -27,7 +27,7 @@ module Gorgerb
         it 'throws an exception' do
           res = Typhoeus::Response.new(
             code: 200,
-            body: '{"steam_id": 1}'
+            body: '{"n_100": {"steam_id": 1}}'
           )
           Typhoeus.stub('http://gorge/players/10/statistics').and_return(res)
 
@@ -63,12 +63,12 @@ module Gorgerb
         it 'returns a struct with the returned data' do
           res = Typhoeus::Response.new(
             code: 200,
-            body: '{"steam_id":10,"kdr":{"total":3.1,"alien":2.5,"marine":3.0},"accuracy":{"total":0.4,"alien":0.6,"marine":{"total":0.4,"no_onos":0.2}}}'
+            body: '{"_":{"steam_id":12034125},"n_30":{"kdr":{"alien":null,"marine":null},"accuracy":{"alien":null,"marine":{"total":null,"no_onos":null}},"_":{"sample_size":30}},"n_100":{"kdr":{"alien":2.08054522924411,"marine":2.73566569484937},"accuracy":{"alien":0.486577566729215,"marine":{"total":0.342548238507313,"no_onos":0.321322922525181}},"_":{"sample_size":100}}}'
           )
           Typhoeus.stub('http://gorge/players/10/statistics').and_return(res)
 
           stats = client.player_statistics(10)
-          expect(stats.kdr.alien).to be_within(0.01).of(2.5)
+          expect(stats.n_100.kdr.alien).to be_within(0.01).of(2.08)
         end
       end
     end

@@ -8,6 +8,8 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
+- Add support for new output format of Gorge.
+
 ### Changed
 
 ### Fixed
