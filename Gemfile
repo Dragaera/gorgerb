@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in sunscout.gemspec
+# Specify your gem's dependencies in gorgerb.gemspec
 gemspec
