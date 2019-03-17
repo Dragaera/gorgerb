@@ -8,8 +8,6 @@ glance - what to expact from upgrading to a new version.
 
 ### Added
 
-- Add support for new output format of Gorge.
-
 ### Changed
 
 ### Fixed
@@ -19,6 +17,13 @@ glance - what to expact from upgrading to a new version.
 ### Deprecated
 
 ### Removed
+
+
+## [0.2.0] - 2019-03-17
+
+### Added
+
+- Add support for new output format of Gorge.
 
 
 ## [0.1.0] - 2018-04-03
